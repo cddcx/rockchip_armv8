@@ -20,10 +20,10 @@ on:
         
       config_s:
         description: '选择config配置文件'
-        default: 't6.config'
+        default: 'orangepi-5-plus.config'
         required: true
         type: choice
-        options: [ r5s.config, t6.config ]
+        options: [ orangepi-5-plus.config, t6.config ]
         
       diy1_s:
         description: '自定义diy1'
