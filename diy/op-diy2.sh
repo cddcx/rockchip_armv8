@@ -75,18 +75,10 @@ sed -i "s/kmod-nft-offload/kmod-nft-offload kmod-nft-tproxy/" include/target.mk
 sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=default-settings-chn luci-app-firewall /" include/target.mk
 
 ## 修改target/linux/rockchip/Makefile
-sed -i 's/DEFAULT_PACKAGES += /DEFAULT_PACKAGES += luci-app-momo luci-app-nikki /g' target/linux/rockchip/Makefile
+sed -i 's/DEFAULT_PACKAGES += /DEFAULT_PACKAGES += luci-app-momo luci-app-nikki luci-app-rtp2httpd /g' target/linux/rockchip/Makefile
 
 # nanopc-t6
-echo '# nanopc-t6
-CONFIG_TARGET_rockchip=y
-CONFIG_TARGET_rockchip_armv8=y
-CONFIG_TARGET_rockchip_armv8_DEVICE_friendlyarm_nanopc-t6=y
-CONFIG_TARGET_KERNEL_PARTSIZE=64
-# CONFIG_TARGET_ROOTFS_EXT4FS is not set
-CONFIG_TARGET_ROOTFS_PARTSIZE=1024
-
-# 启用 eBPF 支持
+echo '# 启用 eBPF 支持
 CONFIG_DEVEL=y
 CONFIG_KERNEL_DEBUG_INFO=y
 CONFIG_KERNEL_DEBUG_INFO_REDUCED=n
