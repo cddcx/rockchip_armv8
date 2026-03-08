@@ -74,7 +74,7 @@ rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-alist,luci-app-v2r
 rm -rf feeds/packages/net/{adguardhome,alist,v2raya,microsocks,shadowsocks-libev}
 
 ## 修改target.mk
-sed -i 's/dnsmasq/dnsmasq-full/g' include/target.mk
+#sed -i 's/dnsmasq/dnsmasq-full/g' include/target.mk
 sed -i "s/kmod-nft-offload/kmod-nft-offload kmod-nft-tproxy/" include/target.mk
 #sed -i "s/odhcp6c/ipv6-helper/" include/target.mk
 sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=default-settings-chn luci-app-firewall /" include/target.mk
