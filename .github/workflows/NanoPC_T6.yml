@@ -1,4 +1,4 @@
-name: NanoPC T6
+name: NanoPC_T6
 
 on:
   repository_dispatch:
