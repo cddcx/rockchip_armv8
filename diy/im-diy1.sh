@@ -52,27 +52,6 @@ echo "========================="
 
 # luci-app-nikki和luci-app-momo
 merge_package main https://github.com/nikkinikki-org/OpenWrt-nikki package luci-app-nikki nikki
-merge_package main https://github.com/nikkinikki-org/OpenWrt-momo package luci-app-momo momo
-
-git clone --depth=1 -b main https://github.com/stackia/rtp2httpd rtp2httpd_tmp
-rm -rf package/rtp2httpd-openwrt
-mv rtp2httpd_tmp/openwrt-support package/rtp2httpd-openwrt
-mkdir package/rtp2httpd-openwrt/rtp2httpd/src
-mv rtp2httpd_tmp/* package/rtp2httpd-openwrt/rtp2httpd/src
-rm -rf rtp2httpd_tmp
-rm -f package/rtp2httpd-openwrt/rtp2httpd/Makefile
-cp -f ${GITHUB_WORKSPACE}/patch/rtp2httpd/Makefile_core package/rtp2httpd-openwrt/rtp2httpd/Makefile
-rm -f package/rtp2httpd-openwrt/luci-app-rtp2httpd/Makefile
-cp -f ${GITHUB_WORKSPACE}/patch/rtp2httpd/Makefile_luci package/rtp2httpd-openwrt/luci-app-rtp2httpd/Makefile
-RTP2HTTPD_VERSION=$(curl -s https://api.github.com/repos/stackia/rtp2httpd/releases/latest | grep '"tag_name":' | sed -E 's/.*"v?([^"]+)".*/\1/')
-if [ -n "$RTP2HTTPD_VERSION" ]; then
-	RTP2HTTPD_PKG_VERSION=$(echo "$RTP2HTTPD_VERSION" | sed -E 's/-([a-z]+)\.([0-9]+)/_\1\2/g')
-	echo "rtp2httpd获取到版本：$RTP2HTTPD_VERSION"
-	echo "rtp2httpd转换为包版本：$RTP2HTTPD_PKG_VERSION"
-	sed -i "s|^\(PKG_VERSION:=\).*|\1$RTP2HTTPD_PKG_VERSION|" package/rtp2httpd-openwrt/rtp2httpd/Makefile
-	sed -i "s|^\(PKG_VERSION:=\).*|\1$RTP2HTTPD_PKG_VERSION|" package/rtp2httpd-openwrt/luci-app-rtp2httpd/Makefile
-	sed -i "s|^\([[:space:]]*AC_INIT([[:space:]]*\[rtp2httpd\][[:space:]]*,[[:space:]]*\[\)[^]]*\(\].*\)|\1$RTP2HTTPD_VERSION\2|" package/rtp2httpd-openwrt/rtp2httpd/src/configure.ac
-fi
 
 # luci-app-daed
 git clone https://github.com/QiuSimons/luci-app-daed package/dae
