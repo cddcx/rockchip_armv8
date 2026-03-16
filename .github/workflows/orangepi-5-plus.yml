@@ -1,4 +1,4 @@
-name: orangepi-5-plu
+name: orangepi-5-plus
 
 on:
   repository_dispatch:
