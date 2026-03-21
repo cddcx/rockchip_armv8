@@ -54,7 +54,7 @@ echo "========================="
 merge_package main https://github.com/nikkinikki-org/OpenWrt-nikki package luci-app-nikki nikki
 
 # luci-app-daed
-git clone https://github.com/QiuSimons/luci-app-daed package/dae
+merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae daed luci-app-daed
 
 # luci-app-fancontrol 风扇控制
 #echo "src-git fancontrol https://github.com/rockjake/luci-app-fancontrol.git" >> "feeds.conf.default"
