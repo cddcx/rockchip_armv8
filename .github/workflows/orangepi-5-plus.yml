@@ -70,18 +70,15 @@ jobs:
       uses: actions/checkout@main
 
     - name: 释放磁盘空间
-      uses: jlumbroso/free-disk-space@main
+      uses: smallprogram/maximize-build-space@master
       with:
-        # this might remove tools that are actually needed,
-        # if set to "true" but frees about 6 GB
-        tool-cache: true
-        # all of these default to true, but feel free to set to
-        # "false" if necessary for your workflow
-        android: true
-        dotnet: true
-        haskell: true
-        large-packages: true
-        swap-storage: true
+        swap-size-mb: 1024
+        temp-reserve-mb: 4608
+        root-reserve-mb: 3584
+        remove-dotnet: "true"
+        remove-android: "true"
+        remove-haskell: "true"
+        remove-codeql: "true"
         
     - name: 安装编译环境
       env:
