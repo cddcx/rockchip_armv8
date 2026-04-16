@@ -57,7 +57,8 @@ echo "src-git rtp2httpd https://github.com/stackia/rtp2httpd.git;main" >> "feeds
 
 # luci-app-daed
 git clone https://github.com/sbwml/package_kernel_vmlinux-btf package/kernel/vmlinux-btf
-merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae daed luci-app-daed
+#merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae daed luci-app-daed
+git clone https://github.com/QiuSimons/luci-app-daed package/dae
 
 # luci-app-fancontrol 风扇控制
 #merge_package main https://github.com/rockjake/luci-app-fancontrol.git package luci-app-fancontrol
