@@ -77,6 +77,9 @@ sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=default-settings-ch
 ## 修改target/linux/rockchip/Makefile
 sed -i 's/DEFAULT_PACKAGES += /DEFAULT_PACKAGES += luci-app-daed /g' target/linux/rockchip/Makefile
 
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+
 # nanopc-t6
 echo '# 启用 eBPF 支持
 CONFIG_DEVEL=y
@@ -97,6 +100,7 @@ CONFIG_PACKAGE_kmod-xdp-sockets-diag=y
 
 # 修改target/linux/x86/Makefile
 #sed -i 's/autocore/autocore/g' target/linux/armsr/Makefil
+./scripts/feeds install -a
 
 echo "========================="
 echo " DIY2 配置完成……"
