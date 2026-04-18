@@ -79,6 +79,9 @@ sed -i "s/kmod-nft-offload/kmod-nft-offload kmod-nft-tproxy/" include/target.mk
 #sed -i "s/odhcp6c/ipv6-helper/" include/target.mk
 sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=default-settings-chn vmlinux-btf luci-app-firewall /" include/target.mk
 
+# 删除luci-app-cpufreq
+sed -i '/luci-app-cpufreq*/d' include/target.mk
+
 ## 修改target/linux/rockchip/Makefile
 sed -i 's/DEFAULT_PACKAGES += /DEFAULT_PACKAGES += luci-app-daed /g' target/linux/rockchip/Makefile
 
