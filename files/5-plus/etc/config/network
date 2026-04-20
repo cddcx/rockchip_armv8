@@ -7,7 +7,7 @@ config interface 'loopback'
 config globals 'globals'
 	option dhcp_default_duid '000499ce522a155b449e984c5d3ca08ef620'
 	option ula_prefix 'fd73:b538:2aa5::/48'
-	option packet_steering '2'
+	option packet_steering '1'
 	option steering_flows '128'
 
 config device
