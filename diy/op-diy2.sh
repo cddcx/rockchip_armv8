@@ -79,7 +79,7 @@ sed -i 's/DEFAULT_PACKAGES += /DEFAULT_PACKAGES += luci-app-daed /g' target/linu
 
 # 更新 golang 版本
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
 
 # nanopc-t6
 echo '# 启用 eBPF 支持
