@@ -56,9 +56,10 @@ echo "src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main" >> "
 echo "src-git rtp2httpd https://github.com/stackia/rtp2httpd.git;main" >> "feeds.conf.default"
 
 # luci-app-daed
-git clone https://github.com/sbwml/package_kernel_vmlinux-btf package/kernel/vmlinux-btf
-merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae daed luci-app-daed
-#git clone https://github.com/QiuSimons/luci-app-daed package/dae
+#git clone https://github.com/sbwml/package_kernel_vmlinux-btf package/kernel/vmlinux-btf
+#merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae daed luci-app-daed
+git clone https://github.com/QiuSimons/vmlinux-btf package/vmlinux-btf
+git clone https://github.com/QiuSimons/luci-app-daed package/dae
 
 # 添加rtp2httpd
 git clone --depth=1 -b main https://github.com/stackia/rtp2httpd rtp2httpd_tmp
