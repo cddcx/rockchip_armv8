@@ -58,6 +58,14 @@ git clone https://github.com/QiuSimons/vmlinux-btf package/vmlinux-btf
 #git clone https://github.com/QiuSimons/luci-app-daed package/dae
 merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae daed luci-app-daed
 
+# 添加rtp2httpd
+git clone --depth=1 -b main https://github.com/stackia/rtp2httpd rtp2httpd_tmp
+rm -rf package/rtp2httpd-openwrt
+mv rtp2httpd_tmp/openwrt-support package/rtp2httpd-openwrt
+rm -rf rtp2httpd_tmp
+mv package/rtp2httpd-openwrt/rtp2httpd/Makefile.versioned package/rtp2httpd-openwrt/rtp2httpd/Makefile
+mv package/rtp2httpd-openwrt/luci-app-rtp2httpd/Makefile.versioned package/rtp2httpd-openwrt/luci-app-rtp2httpd/Makefile
+
 # luci-app-fancontrol 风扇控制
 #echo "src-git fancontrol https://github.com/rockjake/luci-app-fancontrol.git" >> "feeds.conf.default"
 #merge_package main https://github.com/rockjake/luci-app-fancontrol.git package luci-app-fancontrol
