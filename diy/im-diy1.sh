@@ -55,8 +55,8 @@ echo "========================="
 
 # luci-app-daed
 git clone https://github.com/QiuSimons/vmlinux-btf package/vmlinux-btf
-#git clone https://github.com/QiuSimons/luci-app-daed package/dae
-merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae daed luci-app-daed
+git clone https://github.com/QiuSimons/luci-app-daed package/dae
+#merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae daed vmlinux-btf luci-app-daed
 
 # 添加rtp2httpd
 git clone --depth=1 -b main https://github.com/stackia/rtp2httpd rtp2httpd_tmp
