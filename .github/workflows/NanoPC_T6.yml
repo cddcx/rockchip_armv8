@@ -20,7 +20,7 @@ on:
         
       config_s:
         description: '选择config配置文件'
-        default: 'orangepi-5-plus.config'
+        default: 't6.config'
         required: true
         type: choice
         options: [ t6.config ]
