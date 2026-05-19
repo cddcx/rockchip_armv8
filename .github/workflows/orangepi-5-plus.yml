@@ -6,7 +6,7 @@ on:
     inputs:
       URL:
         description: '选择源码：'
-        default: 'openwrt'
+        default: 'immortalwrt'
         required: true
         type: choice
         options: [ immortalwrt ]
@@ -20,7 +20,7 @@ on:
         
       config_s:
         description: '选择config配置文件'
-        default: 'r76s.config'
+        default: 'orangepi-5-plus.configg'
         required: true
         type: choice
         options: [ orangepi-5-plus.config ]
@@ -34,7 +34,7 @@ on:
           
       diy2_s:
         description: '自定义diy2(master分支才有6.18)'
-        default: 'op-diy2.sh'
+        default: 'im-diy2.sh'
         required: true
         type: choice
         options: [ im-diy2.sh, im-6.18-diy2.sh ]
