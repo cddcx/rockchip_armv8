@@ -55,6 +55,9 @@ echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >>
 echo "src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main" >> "feeds.conf.default"
 echo "src-git rtp2httpd https://github.com/stackia/rtp2httpd.git;main" >> "feeds.conf.default"
 
+# luci-app-quickfile 文件管理
+git clone https://github.com/sbwml/luci-app-quickfile package/OpenWrt-quickfile
+
 # luci-app-daed
 #git clone https://github.com/sbwml/package_kernel_vmlinux-btf package/kernel/vmlinux-btf
 merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae vmlinux-btf daed luci-app-daed
