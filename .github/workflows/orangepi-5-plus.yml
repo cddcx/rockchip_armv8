@@ -23,7 +23,7 @@ on:
         default: 'orangepi-5-plus.configg'
         required: true
         type: choice
-        options: [ orangepi-5-plus.config ]
+        options: [ orangepi-5-plus.config, 5.config ]
         
       diy1_s:
         description: '自定义diy1'
