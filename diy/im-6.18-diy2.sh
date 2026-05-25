@@ -84,7 +84,7 @@ sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=default-settings-ch
 #rm -rf package/emortal/cpufreq
 
 ## 修改target/linux/rockchip/Makefile
-sed -i 's/DEFAULT_PACKAGES += /DEFAULT_PACKAGES += luci-app-daed luci-app-quickfile /g' target/linux/rockchip/Makefile
+sed -i 's/DEFAULT_PACKAGES += /DEFAULT_PACKAGES += luci-app-daed /g' target/linux/rockchip/Makefile
 
 # 更新 golang 版本
 #rm -rf feeds/packages/lang/golang
