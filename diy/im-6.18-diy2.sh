@@ -44,7 +44,7 @@ echo "========================="
 #source ${GITHUB_WORKSPACE}/function.sh
 
 # 修改内核
-sed -i 's/PATCHVER:=*.*/PATCHVER:=6.18/g' target/linux/x86/Makefile 
+sed -i 's/PATCHVER:=*.*/PATCHVER:=6.18/g' target/linux/rockchip/Makefile 
 
 # 默认IP
 #sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
