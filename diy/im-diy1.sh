@@ -54,7 +54,7 @@ echo "========================="
 #git clone https://github.com/nikkinikki-org/OpenWrt-nikki package/OpenWrt-nikki
 
 # luci-app-quickfile 文件管理
-#git clone https://github.com/sbwml/luci-app-quickfile package/OpenWrt-quickfile
+git clone https://github.com/sbwml/luci-app-quickfile package/OpenWrt-quickfile
 
 # luci-app-daed
 #git clone https://github.com/QiuSimons/vmlinux-btf package/vmlinux-btf
