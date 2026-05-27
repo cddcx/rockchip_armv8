@@ -86,7 +86,7 @@ sed -i 's/services/network/g' feeds/luci/applications/luci-app-upnp/root/usr/sha
 
 ## 删除软件
 #rm -rf feeds/luci/themes/luci-theme-bootstrap
-rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-alist,luci-app-daed,luci-app-v2raya,luci-app-microsocks,luci-app-passwall,luci-app-shadowsocks-libev,luci-app-openclash}
+rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-alist,luci-app-daed,luci-app-filebrowser,luci-app-filemanager,luci-app-v2raya,luci-app-microsocks,luci-app-passwall,luci-app-shadowsocks-libev,luci-app-openclash}
 rm -rf feeds/packages/net/{adguardhome,alist,daed,v2raya,v2ray-core,v2ray-geodata,v2ray-plugin,microsocks,shadowsocks-libev}
 
 ## 修改target.mk
