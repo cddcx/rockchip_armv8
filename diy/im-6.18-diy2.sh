@@ -120,7 +120,6 @@ CONFIG_PACKAGE_kmod-xdp-sockets-diag=y
 sed -i '/exit 0$/d' package/emortal/default-settings/files/99-default-settings
 cat ${GITHUB_WORKSPACE}/default-settings >> package/emortal/default-settings/files/99-default-settings
 
-./scripts/feeds update -a
 ./scripts/feeds install -a
 
 echo "========================="
