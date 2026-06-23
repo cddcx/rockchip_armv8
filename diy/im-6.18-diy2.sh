@@ -96,7 +96,7 @@ sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=bash default-settin
 #rm -rf package/emortal/cpufreq
 
 ## 修改target/linux/rockchip/Makefile
-sed -i 's/DEFAULT_PACKAGES += /DEFAULT_PACKAGES += luci-app-daed luci-app-quickfile /g' target/linux/rockchip/Makefile
+sed -i 's/DEFAULT_PACKAGES += /DEFAULT_PACKAGES += luci-app-quickfile /g' target/linux/rockchip/Makefile
 
 # 更新 golang 版本
 #rm -rf feeds/packages/lang/golang
@@ -117,8 +117,8 @@ CONFIG_PACKAGE_kmod-xdp-sockets-diag=y
 ' >>  ./.config
 
 # 自定义默认配置
-sed -i '/exit 0$/d' package/emortal/default-settings/files/99-default-settings
-cat ${GITHUB_WORKSPACE}/default-settings >> package/emortal/default-settings/files/99-default-settings
+#sed -i '/exit 0$/d' package/emortal/default-settings/files/99-default-settings
+#cat ${GITHUB_WORKSPACE}/default-settings >> package/emortal/default-settings/files/99-default-settings
 
 ./scripts/feeds install -a
 
