@@ -77,8 +77,8 @@ sed -i 's#\"title\": \"UPnP IGD \& PCP/NAT-PMP\"#\"title\": \"UPnP\"#g' feeds/lu
 sed -i 's/services/network/g' feeds/luci/applications/luci-app-upnp/root/usr/share/luci/menu.d/luci-app-upnp.json
 
 # nginx
-rm -rf feeds/packages/net/nginx
-git clone https://github.com/sbwml/feeds_packages_net_nginx -b openwrt-25.12 feeds/packages/net/nginx
+#rm -rf feeds/packages/net/nginx
+#git clone https://github.com/sbwml/feeds_packages_net_nginx -b openwrt-25.12 feeds/packages/net/nginx
 
 ## 删除软件
 #rm -rf feeds/luci/themes/luci-theme-bootstrap
