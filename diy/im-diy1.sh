@@ -58,7 +58,8 @@ git clone https://github.com/sbwml/luci-app-quickfile package/OpenWrt-quickfile
 
 # luci-app-daed
 git clone https://github.com/QiuSimons/vmlinux-btf package/vmlinux-btf
-git clone https://github.com/QiuSimons/luci-app-daed package/dae
+git clone https://github.com/kenzok8/openwrt-daede package/openwrt-daede
+#git clone https://github.com/QiuSimons/luci-app-daed package/dae
 merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae v2ray-geodata
 #merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae daed vmlinux-btf v2ray-geodata luci-app-daed
 
