@@ -75,7 +75,7 @@ sed -i "s/kmod-nft-offload/kmod-nft-offload kmod-nft-tproxy/" include/target.mk
 sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=default-settings-chn vmlinux-btf luci-app-firewall /" include/target.mk
 
 ## 修改target/linux/rockchip/Makefile
-sed -i 's/DEFAULT_PACKAGES += /DEFAULT_PACKAGES += luci-app-daed /g' target/linux/rockchip/Makefile
+#sed -i 's/DEFAULT_PACKAGES += /DEFAULT_PACKAGES += luci-app-daed /g' target/linux/rockchip/Makefile
 
 # 更新 golang 版本
 #rm -rf feeds/packages/lang/golang
