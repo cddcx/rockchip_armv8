@@ -83,7 +83,7 @@ sed -i 's/services/network/g' feeds/luci/applications/luci-app-upnp/root/usr/sha
 ## 删除软件
 #rm -rf feeds/luci/themes/luci-theme-bootstrap
 rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-alist,luci-app-daed,luci-app-filebrowser,luci-app-filemanager,luci-app-v2raya,luci-app-microsocks,luci-app-passwall,luci-app-shadowsocks-libev,luci-app-openclash}
-rm -rf feeds/packages/net/{adguardhome,alist,daed,xray*,v2ray*,sing*,microsocks,shadowsocks-libev} feeds/packages/utils/v2dat
+rm -rf feeds/packages/net/{adguardhome,alist,dae,daed,xray*,v2ray*,sing*,microsocks,shadowsocks-libev} feeds/packages/utils/v2dat
 
 ## 修改target.mk
 #sed -i 's/dnsmasq/dnsmasq-full/g' include/target.mk
