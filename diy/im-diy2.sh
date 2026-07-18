@@ -44,7 +44,7 @@ echo "========================="
 #source ${GITHUB_WORKSPACE}/function.sh
 
 # 修改内核
-#sed -i 's/PATCHVER:=*.*/PATCHVER:=6.6/g' target/linux/x86/Makefile 
+#sed -i 's/PATCHVER:=*.*/PATCHVER:=6.18/g' target/linux/rockchip/Makefile 
 
 # 默认IP
 #sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
@@ -52,39 +52,51 @@ echo "========================="
 # 修改密码
 sed -i 's/root:::0:99999:7:::/root:$1$SOP5eWTA$fJV8ty3QohO0chErhlxCm1:18775:0:99999:7:::/g' package/base-files/files/etc/shadow
 
+# 使用测试版内核
+echo "CONFIG_TESTING_KERNEL=y" >> .config
+
+# 最大连接数修改为65535
+sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
+
+# luci-compat - 修复上移下移按钮翻译
+sed -i 's/<%:Up%>/<%:Move up%>/g' feeds/luci/modules/luci-compat/luasrc/view/cbi/tblsection.htm
+sed -i 's/<%:Down%>/<%:Move down%>/g' feeds/luci/modules/luci-compat/luasrc/view/cbi/tblsection.htm
+
+# luci-compat - remove extra line breaks from description
+sed -i '/<br \/>/d' feeds/luci/modules/luci-compat/luasrc/view/cbi/full_valuefooter.htm
+
+# 修复procps-ng-top导致首页cpu使用率无法获取
+sed -i 's#top -n1#\/bin\/busybox top -n1#g' feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/luci
+
 # 修复编译时提示 freeswitch 缺少 libpcre 依赖
-sed -i 's/+libpcre \\$/+libpcre2 \\/g' package/feeds/telephony/freeswitch/Makefile
+#sed -i 's/+libpcre \\$/+libpcre2 \\/g' package/feeds/telephony/freeswitch/Makefile
 
 # 精简 UPnP 菜单名称
 sed -i 's#\"title\": \"UPnP IGD \& PCP/NAT-PMP\"#\"title\": \"UPnP\"#g' feeds/luci/applications/luci-app-upnp/root/usr/share/luci/menu.d/luci-app-upnp.json
 # 移动 UPnP 到 “网络” 子菜单
 sed -i 's/services/network/g' feeds/luci/applications/luci-app-upnp/root/usr/share/luci/menu.d/luci-app-upnp.json
 
-# TTYD 自动登录
-sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.config
-# TTYD 更改
-sed -i 's/services/system/g' feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
-sed -i '3 a\\t\t"order": 50,' feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
-sed -i 's/procd_set_param stdout 1/procd_set_param stdout 0/g' feeds/packages/utils/ttyd/files/ttyd.init
-sed -i 's/procd_set_param stderr 1/procd_set_param stderr 0/g' feeds/packages/utils/ttyd/files/ttyd.init
+# nginx
+#rm -rf feeds/packages/net/nginx
+#git clone https://github.com/sbwml/feeds_packages_net_nginx -b openwrt-25.12 feeds/packages/net/nginx
 
 ## 删除软件
 #rm -rf feeds/luci/themes/luci-theme-bootstrap
-rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-alist,luci-app-daed,luci-app-v2raya,luci-app-microsocks,luci-app-passwall,luci-app-shadowsocks-libev,luci-app-openclash}
-rm -rf feeds/packages/net/{adguardhome,alist,daed,v2raya,microsocks,shadowsocks-libev}
+rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-alist,luci-app-dae,luci-app-daed,luci-app-filebrowser,luci-app-filemanager,luci-app-v2raya,luci-app-microsocks,luci-app-passwall,luci-app-shadowsocks-libev,luci-app-openclash}
+rm -rf feeds/packages/net/{adguardhome,alist,dae,daed,xray*,v2ray*,sing*,microsocks,shadowsocks-libev} feeds/packages/utils/v2dat
 
 ## 修改target.mk
 #sed -i 's/dnsmasq/dnsmasq-full/g' include/target.mk
 sed -i "s/kmod-nft-offload/kmod-nft-offload kmod-nft-tproxy/" include/target.mk
 #sed -i "s/odhcp6c/ipv6-helper/" include/target.mk
-sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=default-settings-chn vmlinux-btf luci-app-firewall /" include/target.mk
+sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=bash default-settings-chn vmlinux-btf luci-app-firewall /" include/target.mk
 
 # 删除luci-app-cpufreq
 #sed -i '#luci-app-cpufreq \#d' include/target.mk
 #rm -rf package/emortal/cpufreq
 
 ## 修改target/linux/rockchip/Makefile
-sed -i 's/DEFAULT_PACKAGES += /DEFAULT_PACKAGES += luci-app-daed luci-app-quickfile /g' target/linux/rockchip/Makefile
+sed -i 's/DEFAULT_PACKAGES += /DEFAULT_PACKAGES += luci-app-quickfile /g' target/linux/rockchip/Makefile
 
 # 更新 golang 版本
 #rm -rf feeds/packages/lang/golang
@@ -104,12 +116,10 @@ CONFIG_KERNEL_XDP_SOCKETS=y
 CONFIG_PACKAGE_kmod-xdp-sockets-diag=y
 ' >>  ./.config
 
-# 修改include/target.mk
-#sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=default-settings-chn luci-app-opkg luci-app-firewall /" include/target.mk
-#sed -i 's/luci-app-cpufreq/luci-app-opkg luci-app-homeproxy luci-app-lxc luci-app-nikki luci-app-openclash luci-app-openlist luci-app-udpxy/g' include/target.mk
+# 自定义默认配置
+#sed -i '/exit 0$/d' package/emortal/default-settings/files/99-default-settings
+#cat ${GITHUB_WORKSPACE}/default-settings >> package/emortal/default-settings/files/99-default-settings
 
-# 修改target/linux/x86/Makefile
-#sed -i 's/autocore/autocore/g' target/linux/armsr/Makefil
 ./scripts/feeds install -a
 
 echo "========================="
