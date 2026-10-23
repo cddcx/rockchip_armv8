@@ -60,7 +60,8 @@ echo "src-git rtp2httpd https://github.com/stackia/rtp2httpd.git;main" >> "feeds
 
 # luci-app-daed
 #git clone https://github.com/sbwml/package_kernel_vmlinux-btf package/kernel/vmlinux-btf
-merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae vmlinux-btf daed luci-app-daed
+merge_package master https://github.com/kenzok8/openwrt-daede package/openwrt-daede vmlinux-btf
+merge_package master https://github.com/kenzok8/small package/openwrt-daede dae daed v2ray-geodata luci-app-daede
 #git clone https://github.com/QiuSimons/vmlinux-btf package/vmlinux-btf
 #git clone https://github.com/QiuSimons/luci-app-daed package/dae
 
