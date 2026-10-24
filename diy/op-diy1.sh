@@ -58,6 +58,9 @@ echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >>
 # luci-app-quickfile 文件管理
 #git clone https://github.com/sbwml/luci-app-quickfile package/OpenWrt-quickfile
 
+## luci-app-dae
+git clone https://github.com/QiuSimons/luci-app-dae package/dae
+
 # luci-app-daed
 #merge_package v5 https://github.com/sbwml/openwrt_helloworld package/openwrt-helloworld dae luci-app-dae vmlinux-btf
 #git clone https://github.com/sbwml/package_kernel_vmlinux-btf package/kernel/vmlinux-btf
