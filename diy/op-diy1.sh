@@ -66,6 +66,9 @@ merge_package master https://github.com/kenzok8/small package/openwrt-daede dae 
 #git clone https://github.com/QiuSimons/vmlinux-btf package/vmlinux-btf
 #git clone https://github.com/QiuSimons/luci-app-daed package/dae
 
+# bpf - add host clang-15/18/20 support
+sed -i 's/command -v clang/command -v clang clang-18 clang-20/g' include/bpf.mk
+
 # 添加rtp2httpd
 #git clone --depth=1 -b main https://github.com/stackia/rtp2httpd rtp2httpd_tmp
 #rm -rf package/rtp2httpd-openwrt
@@ -82,9 +85,6 @@ merge_package master https://github.com/kenzok8/small package/openwrt-daede dae 
 
 # luci-app-openclash
 #merge_package master https://github.com/vernesong/OpenClash package luci-app-openclash
-
-# bpf - add host clang-15/18/20 support
-#sed -i 's/clang-13/clang-15 clang-18 clang-20/g' include/bpf.mk
 
 # Realtek driver - R8168 & R8125 & R8126 & R8152 & R8101 & r8127
 #rm -rf package/kernel/{r8168,r8101,r8125,r8126,r8127}
