@@ -85,7 +85,7 @@ merge_package master https://github.com/kenzok8/small package/openwrt-daede dae 
 merge_package master https://github.com/vernesong/OpenClash package luci-app-openclash
 
 # bpf - add host clang-15/18/20 support
-#sed -i 's/clang-13/clang-15 clang-18 clang-20/g' include/bpf.mk
+sed -i 's/clang-13/clang-15 clang-18 clang-20/g' include/bpf.mk
 
 # Realtek driver - R8168 & R8125 & R8126 & R8152 & R8101 & r8127
 #rm -rf package/kernel/{r8168,r8101,r8125,r8126,r8127}
