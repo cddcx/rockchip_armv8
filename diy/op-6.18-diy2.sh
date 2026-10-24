@@ -77,6 +77,10 @@ sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=default-settings-ch
 ## 修改target/linux/rockchip/Makefile
 #sed -i 's/DEFAULT_PACKAGES += /DEFAULT_PACKAGES += luci-app-daed /g' target/linux/rockchip/Makefile
 
+## 删除软件
+rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-v2raya}
+rm -rf feeds/packages/net/{adguardhome,v2ray*}
+
 # 更新 golang 版本
 #rm -rf feeds/packages/lang/golang
 #git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
