@@ -47,7 +47,7 @@ echo "========================="
 #sed -i "s@ImmortalWrt@OpenWrt@g" package/luci-app-homeproxy/po/zh_Hans/homeproxy.po
 #sed -i "s@ImmortalWrt proxy@OpenWrt proxy@g" package/luci-app-homeproxy/htdocs/luci-static/resources/view/homeproxy/{client.js,server.js}
 
-# luci-app-nikki和luci-app-momo
+# luci-app-nikki
 echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
 
 ## luci-app-dae
@@ -82,7 +82,7 @@ merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae v2ray-g
 #sed -i 's/services/system/g' package/luci-app-fancontrol/root/usr/share/luci/menu.d/luci-app-fancontrol.json
 
 # luci-app-openclash
-merge_package master https://github.com/vernesong/OpenClash package luci-app-openclash
+#merge_package master https://github.com/vernesong/OpenClash package luci-app-openclash
 
 # bpf - add host clang-15/18/20 support
 sed -i 's/clang-13/clang-15 clang-18 clang-20/g' include/bpf.mk
