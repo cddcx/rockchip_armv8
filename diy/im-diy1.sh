@@ -47,14 +47,15 @@ echo "========================="
 #sed -i "s@ImmortalWrt@OpenWrt@g" package/luci-app-homeproxy/po/zh_Hans/homeproxy.po
 #sed -i "s@ImmortalWrt proxy@OpenWrt proxy@g" package/luci-app-homeproxy/htdocs/luci-static/resources/view/homeproxy/{client.js,server.js}
 
-## luci-app-passwall
-#merge_package main https://github.com/xiaorouji/openwrt-passwall package luci-app-passwall
-
 # luci-app-nikki和luci-app-momo
-#git clone https://github.com/nikkinikki-org/OpenWrt-nikki package/OpenWrt-nikki
+echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
+
+## luci-app-dae
+git clone https://github.com/QiuSimons/luci-app-dae package/dae
+merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae v2ray-geodata
 
 # luci-app-quickfile 文件管理
-git clone https://github.com/sbwml/luci-app-quickfile package/OpenWrt-quickfile
+#git clone https://github.com/sbwml/luci-app-quickfile package/OpenWrt-quickfile
 
 # luci-app-daed
 # clone https://github.com/QiuSimons/vmlinux-btf package/vmlinux-btf
