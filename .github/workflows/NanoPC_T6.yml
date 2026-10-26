@@ -23,7 +23,7 @@ on:
         default: 't6.config'
         required: true
         type: choice
-        options: [ t6.config nanopc-t6.config ]
+        options: [ t6.config, nanopc-t6.config ]
         
       diy1_s:
         description: '自定义diy1'
