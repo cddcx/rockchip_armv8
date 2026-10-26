@@ -59,8 +59,8 @@ echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >>
 #git clone https://github.com/sbwml/luci-app-quickfile package/OpenWrt-quickfile
 
 ## luci-app-dae
-git clone https://github.com/QiuSimons/luci-app-dae package/dae
-merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae v2ray-geodata
+#git clone https://github.com/QiuSimons/luci-app-dae package/dae
+merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae luci-app-dae dae v2ray-geodata vmlinux-btf
 
 # luci-app-daed
 #merge_package v5 https://github.com/sbwml/openwrt_helloworld package/openwrt-helloworld dae luci-app-dae vmlinux-btf
