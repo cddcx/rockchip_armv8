@@ -113,6 +113,9 @@ CONFIG_KERNEL_DEBUG_INFO=y
 CONFIG_KERNEL_DEBUG_INFO_BTF=y
 # CONFIG_KERNEL_DEBUG_INFO_REDUCED is not set
 CONFIG_KERNEL_XDP_SOCKETS=y
+# honk 支持
+CONFIG_kmod-nfnetlink-queue=y
+CONFIG_kmod-nft-queue=y
 ' >>  ./.config
 
 # 自定义默认配置
