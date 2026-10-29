@@ -87,7 +87,7 @@ rm -rf feeds/packages/net/{adguardhome,alist,dae,daed,xray*,v2ray*,sing*,microso
 
 ## 修改target.mk
 #sed -i 's/dnsmasq/dnsmasq-full/g' include/target.mk
-sed -i "s/kmod-nft-offload/kmod-nft-offload kmod-nft-tproxy/" include/target.mk
+sed -i "s/kmod-nft-offload/kmod-nft-offload kmod-nft-tproxy kmod-nft-queue kmod-nfnetlink-queu/" include/target.mk
 #sed -i "s/odhcp6c/ipv6-helper/" include/target.mk
 sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=bash default-settings-chn luci-app-firewall /" include/target.mk
 
@@ -113,9 +113,6 @@ CONFIG_KERNEL_DEBUG_INFO=y
 CONFIG_KERNEL_DEBUG_INFO_BTF=y
 # CONFIG_KERNEL_DEBUG_INFO_REDUCED is not set
 CONFIG_KERNEL_XDP_SOCKETS=y
-# honk 支持
-CONFIG_kmod-nfnetlink-queue=y
-CONFIG_kmod-nft-queue=y
 ' >>  ./.config
 
 # 自定义默认配置
