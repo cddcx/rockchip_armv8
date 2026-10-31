@@ -47,7 +47,7 @@ echo "========================="
 #sed -i 's/PATCHVER:=*.*/PATCHVER:=6.18/g' target/linux/rockchip/Makefile 
 
 # 默认IP
-#sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generate
 
 # 修改密码
 sed -i 's/root:::0:99999:7:::/root:$1$SOP5eWTA$fJV8ty3QohO0chErhlxCm1:18775:0:99999:7:::/g' package/base-files/files/etc/shadow
