@@ -89,7 +89,7 @@ rm -rf feeds/packages/net/{adguardhome,alist,dae,daed,xray*,v2ray*,sing*,microso
 #sed -i 's/dnsmasq/dnsmasq-full/g' include/target.mk
 sed -i "s/kmod-nft-offload/kmod-nft-offload kmod-nft-tproxy kmod-nft-queue kmod-nfnetlink-queu/" include/target.mk
 #sed -i "s/odhcp6c/ipv6-helper/" include/target.mk
-sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=bash default-settings-chn luci-app-firewall /" include/target.mk
+sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=bash curl default-settings-chn luci-app-firewall /" include/target.mk
 
 # 删除luci-app-cpufreq
 #sed -i '#luci-app-cpufreq \#d' include/target.mk
