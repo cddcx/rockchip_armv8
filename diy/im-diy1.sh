@@ -50,21 +50,13 @@ echo "========================="
 # luci-app-nikki
 echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
 
-## luci-app-dae
+# luci-app-honk/dae
+src-git honk https://github.com/kenzok8/openwrt-honk
 git clone https://github.com/QiuSimons/luci-app-dae package/dae
 merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae v2ray-geodata vmlinux-btf
 
 # luci-app-quickfile 文件管理
 #git clone https://github.com/sbwml/luci-app-quickfile package/OpenWrt-quickfile
-
-# luci-app-daed
-# clone https://github.com/QiuSimons/vmlinux-btf package/vmlinux-btf
-#git clone https://github.com/kenzok8/openwrt-daede package/openwrt-daede
-#git clone https://github.com/QiuSimons/luci-app-daed package/dae
-#merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae v2ray-geodata
-#merge_package main https://github.com/kenzok8/openwrt-daede package/openwrt-daede vmlinux-btf
-#merge_package master https://github.com/kenzok8/small package/openwrt-daede dae daed v2ray-geodata luci-app-daede
-#merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae daed vmlinux-btf v2ray-geodata luci-app-daed
 
 # 添加rtp2httpd
 #git clone --depth=1 -b main https://github.com/stackia/rtp2httpd rtp2httpd_tmp
