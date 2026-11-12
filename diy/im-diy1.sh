@@ -51,7 +51,7 @@ echo "========================="
 echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
 
 # luci-app-honk/dae
-src-git honk https://github.com/kenzok8/openwrt-honk
+echo "src-git honk https://github.com/kenzok8/openwrt-honk.git;main" >> "feeds.conf.default"
 git clone https://github.com/QiuSimons/luci-app-dae package/dae
 merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae v2ray-geodata vmlinux-btf
 
