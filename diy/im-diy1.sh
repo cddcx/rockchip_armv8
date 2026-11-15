@@ -40,61 +40,48 @@ merge_feed(){
 echo "开始 DIY1 配置……"
 echo "========================="
 
-# luci-app-homeproxy
-#git clone https://github.com/immortalwrt/homeproxy package/luci-app-homeproxy           ####### homeproxy的默认版本(二选一) 
-#git clone -b dev https://github.com/immortalwrt/homeproxy package/luci-app-homeproxy
-#merge_package v5 https://github.com/sbwml/openwrt_helloworld  package/luci-app-homeproxy chinadns-ng sing-box
-#sed -i "s@ImmortalWrt@OpenWrt@g" package/luci-app-homeproxy/po/zh_Hans/homeproxy.po
-#sed -i "s@ImmortalWrt proxy@OpenWrt proxy@g" package/luci-app-homeproxy/htdocs/luci-static/resources/view/homeproxy/{client.js,server.js}
+readonly SCRIPT_START=$(date +%s)
+readonly PKG_DIR="$(pwd)/package/custom"          # 绝对路径，中途 cd 不失效
+readonly PKGINFO="tmp/.packageinfo"
+
+# ================================================================
+# 主流程
+# ================================================================
+group "拉取可选插件 (diy-part1.sh)"
+mkdir -p "$PKG_DIR"
+endgroup
 
 # luci-app-nikki
 echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
 
-# luci-app-honk/dae
-echo "src-git honk https://github.com/kenzok8/openwrt-honk.git;main" >> "feeds.conf.default"
-git clone https://github.com/QiuSimons/luci-app-dae package/dae
-merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae v2ray-geodata vmlinux-btf
+# luci-app-hon
+clone https://github.com/QiuSimons/luci-app-honk.git  "$PKG_DIR/honk"  "" --depth=1
+# ------------------------------------------------------------------
+# 预放 honk-core.bin：--if-needed 检测到无 stamp 的产物会直接复用，
+# 跳过 zig/bpf-linker/cargo 工具链校验和源码编译
+# ------------------------------------------------------------------
+HONK_DIR="$PKG_DIR/honk/honk"
+HONK_OUT="$HONK_DIR/files/honk-core.bin"
+if [ -s "$HONK_OUT" ]; then
+    log " ↷ honk-core.bin 已存在，跳过预放"
+else
+    group "预放 honk-core.bin（免 zig 工具链）"
+    curl -fsSL --retry 3 -o /tmp/honk-core.tar.gz \
+      "https://github.com/daeuniverse/honk/releases/download/v0.1.0-beta.6/honk-core-v0.1.0-beta.6-aarch64-unknown-linux-musl-stock-native-api.tar.gz"
+    echo "be9152ee2034be834200af2abb1bbc9616210d94b948eafa8680f77d87be88a7  /tmp/honk-core.tar.gz" | sha256sum -c -
+    rm -rf /tmp/honkpkg && mkdir -p /tmp/honkpkg
+    tar -xzf /tmp/honk-core.tar.gz -C /tmp/honkpkg
+    core="$(find /tmp/honkpkg -type f -name honk-core -print -quit)"
+    [ -n "$core" ] || die "tarball 内未找到 honk-core，release 结构可能已变"
+    mkdir -p "$HONK_DIR/files"
+    cp "$core" "$HONK_OUT"
+    log " ✅ 已预放 honk-core.bin ($(du -h "$HONK_OUT" | cut -f1))"
+    endgroup
 
-# luci-app-quickfile 文件管理
-#git clone https://github.com/sbwml/luci-app-quickfile package/OpenWrt-quickfile
-
-# 添加rtp2httpd
-#git clone --depth=1 -b main https://github.com/stackia/rtp2httpd rtp2httpd_tmp
-#rm -rf package/rtp2httpd-openwrt
-#mv rtp2httpd_tmp/openwrt-support package/rtp2httpd-openwrt
-#rm -rf rtp2httpd_tmp
-#mv package/rtp2httpd-openwrt/rtp2httpd/Makefile.versioned package/rtp2httpd-openwrt/rtp2httpd/Makefile
-#mv package/rtp2httpd-openwrt/luci-app-rtp2httpd/Makefile.versioned package/rtp2httpd-openwrt/luci-app-rtp2httpd/Makefile
-
-# luci-app-fancontrol 风扇控制
-#echo "src-git fancontrol https://github.com/rockjake/luci-app-fancontrol.git" >> "feeds.conf.default"
-#merge_package main https://github.com/rockjake/luci-app-fancontrol.git package luci-app-fancontrol
-#merge_package main https://github.com/rockjake/luci-app-fancontrol.git package fancontrol
-#sed -i 's/风扇通用控制小程序/风扇控制/g' package/luci-app-fancontrol/po/zh_Hans/fancontrol.po
-#sed -i 's/services/system/g' package/luci-app-fancontrol/root/usr/share/luci/menu.d/luci-app-fancontrol.json
-
-# luci-app-openclash
-#merge_package master https://github.com/vernesong/OpenClash package luci-app-openclash
+merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae v2ray-geodata
 
 # bpf - add host clang-15/18/20 support
 sed -i 's/clang-13/clang-15 clang-18 clang-20/g' include/bpf.mk
-
-# Realtek driver - R8168 & R8125 & R8126 & R8152 & R8101 & r8127
-#rm -rf package/kernel/{r8168,r8101,r8125,r8126,r8127}
-#git clone https://github.com/sbwml/package_kernel_r8168 package/kernel/r8168
-#git clone https://github.com/sbwml/package_kernel_r8152 package/kernel/r8152
-#git clone https://github.com/sbwml/package_kernel_r8101 package/kernel/r8101
-#git clone https://github.com/sbwml/package_kernel_r8125 package/kernel/r8125
-#git clone https://github.com/sbwml/package_kernel_r8126 package/kernel/r8126
-#git clone https://github.com/sbwml/package_kernel_r8127 package/kernel/r8127
-
-# luci-theme-kucat
-#git clone -b js https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
-#sed -i '/set luci.main.mediaurlbase*/d' package/luci-theme-kucat/root/etc/uci-defaults/30_luci-kucat
-
-# SmartDNS
-#git clone --depth=1 https://github.com/pymumu/luci-app-smartdns package/luci-app-smartdns
-#git clone --depth=1 https://github.com/pymumu/openwrt-smartdns package/smartdns
 
 echo "========================="
 echo " DIY1 配置完成……"
