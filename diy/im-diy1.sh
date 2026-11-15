@@ -47,9 +47,8 @@ readonly PKGINFO="tmp/.packageinfo"
 # ================================================================
 # 主流程
 # ================================================================
-group "拉取可选插件 (diy-part1.sh)"
+
 mkdir -p "$PKG_DIR"
-endgroup
 
 # luci-app-nikki
 echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
