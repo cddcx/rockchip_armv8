@@ -54,7 +54,7 @@ mkdir -p "$PKG_DIR"
 echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
 
 # luci-app-hon
-clone https://github.com/QiuSimons/luci-app-honk.git  "$PKG_DIR/honk"  "" --depth=1
+git clone https://github.com/QiuSimons/luci-app-honk.git  "$PKG_DIR/honk"  "" --depth=1
 # ------------------------------------------------------------------
 # 预放 honk-core.bin：--if-needed 检测到无 stamp 的产物会直接复用，
 # 跳过 zig/bpf-linker/cargo 工具链校验和源码编译
