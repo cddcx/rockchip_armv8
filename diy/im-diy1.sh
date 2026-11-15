@@ -41,7 +41,7 @@ echo "开始 DIY1 配置……"
 echo "========================="
 
 readonly SCRIPT_START=$(date +%s)
-readonly PKG_DIR="$(pwd)/package/custom"          # 绝对路径，中途 cd 不失效
+readonly PKG_DIR="$(pwd)/package/tom"          # 绝对路径，中途 cd 不失效
 readonly PKGINFO="tmp/.packageinfo"
 
 # ================================================================
@@ -54,7 +54,7 @@ mkdir -p "$PKG_DIR"
 echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
 
 # luci-app-hon
-git clone https://github.com/QiuSimons/luci-app-honk.git  "$PKG_DIR/honk"  "" --depth=1
+git clone https://github.com/QiuSimons/luci-app-honk  "$PKG_DIR/honk"
 # ------------------------------------------------------------------
 # 预放 honk-core.bin：--if-needed 检测到无 stamp 的产物会直接复用，
 # 跳过 zig/bpf-linker/cargo 工具链校验和源码编译
