@@ -103,7 +103,14 @@ sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=bash curl default-s
 #git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
 
 # nanopc-t6
-echo '# 启用 eBPF 支持
+echo '# orangepi-5-plus
+CONFIG_TARGET_rockchip=y
+CONFIG_TARGET_rockchip_armv8=y
+CONFIG_TARGET_rockchip_armv8_DEVICE_xunlong_orangepi-5-plus=y
+CONFIG_TARGET_KERNEL_PARTSIZE=160
+# CONFIG_TARGET_ROOTFS_EXT4FS is not set
+CONFIG_TARGET_ROOTFS_PARTSIZE=1024
+# 启用 eBPF 支持
 CONFIG_DEVEL=y
 CONFIG_BPF_TOOLCHAIN_HOST=y
 # CONFIG_BPF_TOOLCHAIN_NONE is not set
