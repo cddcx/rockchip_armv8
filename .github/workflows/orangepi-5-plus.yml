@@ -126,6 +126,12 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
         
+    - name: honk-core
+      run: |
+        chmod +x scripts/honk.sh
+        cd openwrt
+        $GITHUB_WORKSPACE/scripts/honk.sh
+        
     - name: 更新、安装"feeds"
       working-directory: ./openwrt
       run: |
