@@ -40,7 +40,8 @@ merge_feed(){
 echo "开始 DIY1 配置……"
 echo "========================="
 
-merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae v2ray-geodata
+
+merge_package v5 https://github.com/sbwml/openwrt_helloworld package/openwrt_helloworld v2ray-geodata vmlinux-btf
 
 # bpf - add host clang-15/18/20 support
 sed -i 's/clang-13/clang-15 clang-18 clang-20/g' include/bpf.mk
