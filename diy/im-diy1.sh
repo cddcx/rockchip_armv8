@@ -40,7 +40,7 @@ merge_feed(){
 echo "开始 DIY1 配置……"
 echo "========================="
 
-
+# dae/honk 依赖
 merge_package v5 https://github.com/sbwml/openwrt_helloworld package/openwrt_helloworld v2ray-geodata vmlinux-btf
 
 # bpf - add host clang-15/18/20 support
