@@ -40,6 +40,9 @@ merge_feed(){
 echo "开始 DIY1 配置……"
 echo "========================="
 
+# luci-app-nikki和luci-app-momo
+echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
+
 # dae/honk 依赖
 merge_package v5 https://github.com/sbwml/openwrt_helloworld package/openwrt_helloworld v2ray-geodata vmlinux-btf
 
